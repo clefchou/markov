@@ -118,7 +118,6 @@ void H_markov(int len, vector<result_H> &r) {			//序列生成并计算概率和条件概率并
 			r[lenc - 1].H_c = ret.H_c;
 			r[lenc - 1].rongyu = ret.rongyu;	//每次都更新冗余度，直到r[lenc-1].H是真的H，此时冗余度也是H对应的冗余了。
 			r[lenc - 1].I = ret.I;
-			//printf("%lf\n", r[lenc - 1].H);
 }
 
 
@@ -136,12 +135,7 @@ int main() {
 	}
 
 	replacefile("\sample.txt");
-	/*
-	for (int len = 1; len < Markovlenth+1; len++) {	//生成从a到 zzzzz的序列
-		string_generate(len);
-	}*/	//没用了 太费时间
-	
-/*
+
 	for (int len = 1; len < Markovlenth+1; len++) {	//扫描文章中的数据并将其存入数据库
 		data_insert(len);
 		printf("data update complete: %d\n", len);
@@ -149,7 +143,7 @@ int main() {
 	printf("data update complete! \n");
 	
 	string_markov();
-		*/
+
 	for (int len = 1; len < Markovlenth + 1; len++) {	//计算熵，冗余度等等
 		H_markov(len,result);
 
@@ -161,7 +155,7 @@ int main() {
 	}
 	fclose(logfile);
 	
-	//printf("//");
+
 	finish_time = clock();
 	FILE *timelog = fopen("timelog.txt", "w");
 	total_time = ((double)(finish_time - start_time)) / CLOCKS_PER_SEC;
