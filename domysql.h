@@ -11,6 +11,7 @@ public:
 	unsigned int port;
 	const char * unix_socket;
 	char query[500];
+    int longBytes, mklength;
 	MYSQL mysql, *sock;
 	MYSQL_RES *res;
 	MYSQL_ROW row;
@@ -28,6 +29,10 @@ public:
 	void insert_list(char *listname);
 	void update_list(char *listname);
 	int select_list(char *listname);
+	double markov(int len);
+	result_H markov(int len,int type);
+	result_H markov_H(char * src);
+	int caculate(char* src);
 	double select_name(char *name,char *data);
 	void insert_result(char *c, double jp, double cp, double si, double cs, int len);
 	
